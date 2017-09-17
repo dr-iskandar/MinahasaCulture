@@ -20,6 +20,7 @@ public class VirtualButtonEventHandler : MonoBehaviour,
     /// The materials that will be set for the teapot model
     /// </summary>
     public Material[] m_TeapotMaterials;
+	public GameObject information;
     public Material m_VirtualButtonMaterial;
     #endregion // PUBLIC_MEMBERS
 
@@ -72,8 +73,8 @@ public class VirtualButtonEventHandler : MonoBehaviour,
         // to the active material list:
         switch (vb.VirtualButtonName)
         {
-        case "red":
-            mActiveMaterials.Add(m_TeapotMaterials[0]);
+		case "info":
+			information.SetActive (true);
             break;
 
         case "blue":
@@ -108,8 +109,8 @@ public class VirtualButtonEventHandler : MonoBehaviour,
         // from the active material list:
         switch (vb.VirtualButtonName)
         {
-        case "red":
-            mActiveMaterials.Remove(m_TeapotMaterials[0]);
+		case "info":
+			information.SetActive (false);
             break;
 
         case "blue":
