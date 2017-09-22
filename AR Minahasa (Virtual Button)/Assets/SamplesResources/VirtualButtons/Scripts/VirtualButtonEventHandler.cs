@@ -20,14 +20,14 @@ public class VirtualButtonEventHandler : MonoBehaviour,
     /// The materials that will be set for the teapot model
     /// </summary>
     public Material[] m_TeapotMaterials;
-	public GameObject information;
+	public GameObject infoK, infoW, infoP;
     public Material m_VirtualButtonMaterial;
     #endregion // PUBLIC_MEMBERS
 
 
     #region PRIVATE_MEMBERS
-    private GameObject mTeapot;
-    private List<Material> mActiveMaterials;
+   // private GameObject mTeapot;
+   // private List<Material> mActiveMaterials;
     #endregion // PRIVATE_MEMBERS
 
 
@@ -47,10 +47,10 @@ public class VirtualButtonEventHandler : MonoBehaviour,
         }
 
         // Get handle to the teapot object
-        mTeapot = transform.FindChild("VirtualButtons_teapot").gameObject;
+     //   mTeapot = transform.FindChild("VirtualButtons_teapot").gameObject;
 
         // The list of active materials
-        mActiveMaterials = new List<Material>();
+      //  mActiveMaterials = new List<Material>();
     }
 
     #endregion // MONOBEHAVIOUR_METHODS
@@ -64,35 +64,35 @@ public class VirtualButtonEventHandler : MonoBehaviour,
     {
         Debug.Log("OnButtonPressed: " + vb.VirtualButtonName);
 
-        if (!IsValid())
-        {
-            return;
-        }
+        //if (!IsValid())
+        //{
+        //    return;
+        //}
 
         // Add the material corresponding to this virtual button
         // to the active material list:
         switch (vb.VirtualButtonName)
         {
-		case "info":
-			information.SetActive (true);
+		case "infokolintang":
+			infoK.SetActive (true);
             break;
 
-        case "blue":
-            mActiveMaterials.Add(m_TeapotMaterials[1]);
+		case "infowatu":
+			infoP.SetActive (true);
             break;
 
-        case "yellow":
-            mActiveMaterials.Add(m_TeapotMaterials[2]);
+		case "infowaruga":
+			infoW.SetActive (true);
             break;
 
         case "green":
-            mActiveMaterials.Add(m_TeapotMaterials[3]);
+        //    mActiveMaterials.Add(m_TeapotMaterials[3]);
             break;
         }
 
         // Apply the new material:
-        if (mActiveMaterials.Count > 0)
-            mTeapot.GetComponent<Renderer>().material = mActiveMaterials[mActiveMaterials.Count - 1];
+        //if (mActiveMaterials.Count > 0)
+          //  mTeapot.GetComponent<Renderer>().material = mActiveMaterials[mActiveMaterials.Count - 1];
     }
 
     /// <summary>
@@ -100,48 +100,48 @@ public class VirtualButtonEventHandler : MonoBehaviour,
     /// </summary>
     public void OnButtonReleased(VirtualButtonAbstractBehaviour vb)
     {
-        if (!IsValid())
-        {
-            return;
-        }
+      //  if (!IsValid())
+        //{
+          //  return;
+        //}
 
         // Remove the material corresponding to this virtual button
         // from the active material list:
         switch (vb.VirtualButtonName)
         {
-		case "info":
-			information.SetActive (false);
-            break;
+		case "infokolintang":
+			infoK.SetActive (false);
+			break;
 
-        case "blue":
-            mActiveMaterials.Remove(m_TeapotMaterials[1]);
-            break;
+		case "infowatu":
+			infoP.SetActive (false);
+			break;
 
-        case "yellow":
-            mActiveMaterials.Remove(m_TeapotMaterials[2]);
-            break;
+		case "infowaruga":
+			infoW.SetActive (false);
+			break;
 
         case "green":
-            mActiveMaterials.Remove(m_TeapotMaterials[3]);
+            //mActiveMaterials.Remove(m_TeapotMaterials[3]);
             break;
         }
 
         // Apply the next active material, or apply the default material:
-        if (mActiveMaterials.Count > 0)
-            mTeapot.GetComponent<Renderer>().material = mActiveMaterials[mActiveMaterials.Count - 1];
-        else
-            mTeapot.GetComponent<Renderer>().material = m_TeapotMaterials[4];
+        //if (mActiveMaterials.Count > 0)
+          //  mTeapot.GetComponent<Renderer>().material = mActiveMaterials[mActiveMaterials.Count - 1];
+        //else
+          //  mTeapot.GetComponent<Renderer>().material = m_TeapotMaterials[4];
     }
     #endregion //PUBLIC_METHODS
 
 
     #region PRIVATE_METHODS
-    private bool IsValid()
-    {
+  //  private bool IsValid()
+    //{
         // Check the materials and teapot have been set:
-        return m_TeapotMaterials != null &&
-            m_TeapotMaterials.Length == 5 &&
-            mTeapot != null;
-    }
+       // return m_TeapotMaterials != null &&
+     //       m_TeapotMaterials.Length == 5 &&
+            //mTeapot != null;
+    //}
     #endregion //PRIVATE_METHODS
 }

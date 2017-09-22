@@ -20,7 +20,8 @@ namespace Vuforia
     
         #endregion // PRIVATE_MEMBER_VARIABLES
 
-
+		public GameObject UIWatu;
+		public ARModul modul;
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
     
@@ -83,6 +84,13 @@ namespace Vuforia
                 component.enabled = true;
             }
 
+			if (gameObject.name == "ImageTargetWatu") 
+			{
+				UIWatu.SetActive (true);
+				modul.watu1.SetActive (true);
+				modul.watu2.SetActive (false);
+			}
+
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 
@@ -103,6 +111,14 @@ namespace Vuforia
             {
                 component.enabled = false;
             }
+
+			if (gameObject.name == "ImageTargetWatu") 
+			{
+				if (UIWatu!=null) 
+				{
+					UIWatu.SetActive (false);	
+				}
+			}
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
         }
