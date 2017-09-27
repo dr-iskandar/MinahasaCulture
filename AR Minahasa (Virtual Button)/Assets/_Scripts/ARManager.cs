@@ -10,7 +10,7 @@ public class ARManager : MonoBehaviour {
 	public bool boel;
 	public ARModul modul;
 	public GameObject cap;
-	CaptureAndSave snapShot ;
+	public CaptureAndSave snapShot ;
 
 	public void StartAR(GameObject back)
 	{
@@ -89,7 +89,14 @@ public class ARManager : MonoBehaviour {
 
 	public void SS()
 	{
+		StartCoroutine (ienum ());
 		snapShot.CaptureAndSaveToAlbum(ImageType.JPG);
 	}
 
+	public IEnumerator ienum()
+	{
+		cap.SetActive (false);
+		yield return new WaitForSeconds (1);
+		cap.SetActive (true);
+	}
 }
